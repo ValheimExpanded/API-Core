@@ -1,0 +1,222 @@
+Sand 			| Displayed as: Sand
+GlassSlag 		| Displayed as: Glass Slag
+FrometalEssence		| Displayed as: Frometal Essence
+FlametalEssence		| Displayed as: Flametal Essence
+GlassBar 		| Displayed as: Glass
+HeatedIronBar 		| Displayed as: Heated Iron
+HeavymetalBar 		| Displayed as: Heavymetal
+Heavyscale 		| Displayed as: Heavyscale
+FrometalBar 		| Displayed as: Frometal
+Drakescale 		| Displayed as: Drakescale
+FlametalBar 		| Displayed as: Flametal
+Forgedscale 		| Displayed as: Forgedscale
+MistmetalBar 		| Displayed as: Mistmetal
+CoinsBone 		| Displayed as: Bone Coins
+CoinsTin 		| Displayed as: Tin Coins
+CoinsCopper 		| Displayed as: Copper Coins
+CoinsBronze 		| Displayed as: Bronze Coins
+CoinsIron 		| Displayed as: Iron Coins
+CoinsSilver 		| Displayed as: Silver Coins
+CoinsBlackmetal 	| Displayed as: BlackMetal Coins
+CoinsHeavymetal 	| Displayed as: Heavymetal Coins
+CoinsFrometal 		| Displayed as: Frometal Coins
+CoinsFlametal 		| Displayed as: Flametal Coins
+HammerSilver 		| Displayed as: Soulin's Hammer
+HoeSilver 		| Displayed as: Adonis' Hoe
+Crossbow 		| Displayed as: Crossbow
+torch 			| Displayed as: Adventurer's Torch
+
+BowBone
+AtgeirBone
+ClubBone
+SledgeBone
+BattleaxeBone
+SpearBone
+KnifeBone
+MaceBone
+SwordBone
+ShieldBone
+ShieldBoneTower
+
+SledgeBronze 		| Displayed as: Bronze Sledge
+BattleaxeBronze 	| Displayed as: Bronze Battleaxe
+KnifeBronze 		| Displayed as: Bronze Knife
+
+BowAncient 		| Displayed as: Ancient Bow
+AtgeirAncient 		| Displayed as: Ancient Atgeir
+ClubAncient 		| Displayed as: Ancient Club
+SledgeAncient 		| Displayed as: Ancient Sledge
+BattleaxeAncient	| Displayed as: Ancient Battleaxe
+SwordAncient 		| Displayed as: Ancient Sword
+MaceAncient 		| Displayed as: Ancient Mace
+ShieldAncient 		| Displayed as: Ancient Shield
+ShieldAncientTower 	| Displayed as: Ancient Tower Shield
+
+SpearIron 		| Displayed as: Iron Spear
+KnifeIron 		| Displayed as: Iron Knife
+
+BowAbyssal 		| Displayed as: Abyssal Bow
+AtgeirAbyssal 		| Displayed as: Abyssal Atgeir
+ClubAbyssal 		| Displayed as: Abyssal Club
+SledgeAbyssal 		| Displayed as: Abyssal Sledge
+BattleaxeAbyssal	| Displayed as: Abyssal Battleaxe
+MaceAbyssal 		| Displayed as: Abyssal Mace
+SwordAbyssal 		| Displayed as: Abyssal Sword
+ShieldAbyssal 		| Displayed as: Abyssal Shield
+ShieldAbyssalTower 	| Displayed as: Abyssal Tower Shield
+
+BowSilver 		| Displayed as: Silver Bow
+AtgeirSilver 		| Displayed as: Silver Atgeir
+ClubSilver 		| Displayed as: Silver Club
+SledgeSilver 		| Displayed as: Silver Sledge
+BattleaxeSilver 	| Displayed as: Silver Battleaxe
+SpearSilver		| Displayed as: Silver Spear
+KnifeSilver 		| Displayed as: Silver Knife
+ShieldSilverTower 	| Displayed as: Silver Tower Shield
+AxeSilver 		| Displayed as: Silver Axe
+PickaxeSilver 		| Displayed as: Silver Pickaxe
+
+BowHeavymetal 		| Displayed as: Heavymetal Bow
+ClubHeavymetal 		| Displayed as: Heavymetal Club
+SledgeHeavymetal 	| Displayed as: Heavymetal Sledge
+BattleaxeHeavymetal 	| Displayed as: Heavymetal Battleaxe
+SpearHeavymetal 	| Displayed as: Heavymetal Spear
+MaceHeavymetal 		| Displayed as: Heavymetal Mace
+PickaxeHeavymetal 	| Displayed as: Heavymetal Pickaxe
+SledgeaxeHeavymetal 	| Displayed as: Heavymetal Sledgeaxe
+
+AtgeirFrometal 		| Displayed as: Frometal Atgeir
+AxeFrometal 		| Displayed as: Frometal Axe
+BowFrometal 		| Displayed as: Frometal Bow
+SledgeFrometal 		| Displayed as: Frometal Sledge
+BattleaxeFrometal 	| Displayed as: Frometal Battleaxe
+KnifeFrometal 		| Displayed as: Frometal Knife
+MaceFrometal 		| Displayed as: Frometal Mace
+PickaxeFrometal 	| Displayed as: Frometal Pickaxe
+ShieldFrometal 		| Displayed as: Frometal Shield
+ShieldFrometalTower     | Displayed as: Frometal Tower Shield
+SledgeaxeFrometal 	| Displayed as: Frometal Sledge
+SpearFrometal 		| Displayed as: Frometal Spear
+SwordFrometal 		| Displayed as: Frometal Sword
+
+BowFlametal 		| Displayed as: Flametal Bow
+AtgeirFlametal 		| Displayed as: Flametal Atgeir
+ClubFlametal 		| Displayed as: Flametal Club
+SledgeFlametal 		| Displayed as: Flametal Sledge
+BattleaxeFlametal 	| Displayed as: Flametal Battleaxe
+SpearFlametal 		| Displayed as: Flametal Spear
+KnifeFlametal 		| Displayed as: Flametal Knife
+MaceFlametal 		| Displayed as: Flametal Mace
+SwordFlametal 		| Displayed as: Flametal Sword
+ShieldFlametal 		| Displayed as: Flametal Shield
+ShieldFlametalTower 	| Displayed as: Flametal Tower Shield
+AxeFlametal 		| Displayed as: Flametal Axe
+PickaxeFlametal 	| Displayed as: Flametal Pickaxe
+HelmetRag 		| Displayed as: Rag Hat
+ArmorRagsChes 		| Displayed as: Rag Tunic
+ArmorRagsLeg 		| Displayed as: Rag Pants
+CapeRag 		| Displayed as: Rag Cape
+BeltRag 		| Displayed as: Rag Belt
+HelmetLeathe 		| Displayed as: Leather Tunic
+ArmorLeatherChes 	| Displayed as: $item_chest_leather
+ArmorLeatherLeg 	| Displayed as: Leather Pants
+CapeDeerHid 		| Displayed as: Deerskin Cape
+BeltLeather 		| Displayed as: Leather Belt
+HelmetBone 		| Displayed as: Bone Helmet
+ArmorBoneChest 		| Displayed as: Bone Chestplate
+ArmorBoneLegs 		| Displayed as: Bone Greaves
+CapeBone 		| Displayed as: Bone Cape
+BeltBone 		| Displayed as: Bone Belt
+HelmetTrollLeathe 	| Displayed as: TrollLeather Helmet
+ArmorTrollLeatherChes 	| Displayed as: TrollLeather Tunic
+ArmorTrollLeatherLeg 	| Displayed as: TrollLeather Cape
+CapeTrollHid 		| Displayed as: $item_cape_trollhide
+BeltTrollHide 		| Displayed as: TrollHide Belt
+HelmetBronz 		| Displayed as: Bronze Greaves
+ArmorBronzeChes 	| Displayed as: Bronze Cuirass
+ArmorBronzeLeg 		| Displayed as: $item_legs_bronze
+CapeBronze 		| Displayed as: Bronze Cape
+BeltBronze 		| Displayed as: Bronze Belt
+HelmetAncient 		| Displayed as: Ancient Bark Helmet
+ArmorAncientChest 	| Displayed as: Ancient Bark Chestplate
+ArmorAncientLegs 	| Displayed as: Ancient Bark Greaves
+CapeAncient 		| Displayed as: Ancient Bark Cape
+BeltAncient 		| Displayed as: Ancient Bark Belt
+HelmetIro 		| Displayed as: Iron Helmet
+ArmorIronChes 		| Displayed as: Iron Plate Cuirass
+ArmorIronLeg 		| Displayed as: Iron Plate Greaves
+CapeIron 		| Displayed as: Iron Cape
+BeltIron 		| Displayed as: Iron Belt
+HelmetAbyssal 		| Displayed as: Abyssal Helmet
+ArmorAbyssalChest 	| Displayed as: Abyssal Chestplate
+ArmorAbyssalLegs 	| Displayed as: Abyssal Greaves
+CapeAbyssal 		| Displayed as: Abyssal Cape
+BeltAbyssal 		| Displayed as: Abyssal Belt
+HelmetSilver 		| Displayed as: Silver Helmet
+ArmorSilverChest 	| Displayed as: Silver Chestplate
+ArmorSilverLegs 	| Displayed as: Silver Greaves
+CapeSilver 		| Displayed as: Silver Cape
+BeltSilver 		| Displayed as: Silver Belt
+HelmetDrak 		| Displayed as: WolfPelt Helmet
+ArmorWolfChes 		| Displayed as: WolfPelt Greaves
+ArmorWolfLeg 		| Displayed as: $item_legs_wolf
+CapeWol 		| Displayed as: WolfPelt Cape
+BeltWolf 		| Displayed as: WolfPelt Belt
+HelmetBlackMetal 	| Displayed as: BlackMetal Helmet
+ArmorBlackMetalChest 	| Displayed as: BlackMetal Chestplate
+ArmorBlackMetalLegs 	| Displayed as: BlackMetal Greaves
+CapeBlackMetal 		| Displayed as: BlackMetal Cape
+BeltBlackMetal 		| Displayed as: BlackMetal Belt
+HelmetPadde 		| Displayed as: Padded Combat Greaves
+ArmorPaddedChes 	| Displayed as: $item_chest_pcuirass
+ArmorPaddedLeg 		| Displayed as: $item_legs_pgreaves
+CapePadded 		| Displayed as: Padded Combat Cape
+BeltPadded 		| Displayed as: Padded Combat Belt
+HelmetHeavymetal 	| Displayed as: Heavymetal Helmet
+ArmorHeavymetalChest 	| Displayed as: Heavymetal Chestplate
+ArmorHeavymetalLegs 	| Displayed as: Heavymetal Greaves
+CapeHeavymetal 		| Displayed as: Heavymetal Cape
+BeltHeavymetal 		| Displayed as: Heavymetal Belt
+HelmetHeavyscale 	| Displayed as: Heavyscale Helmet
+ArmorHeavyscaleChest 	| Displayed as: Heavyscale Chestplate
+ArmorHeavyscaleLegs 	| Displayed as: Heavyscale Greaves
+CapeHeavyscale 		| Displayed as: Heavyscale Cape
+BeltHeavyscale 		| Displayed as: Heavyscale Belt
+HelmetFrometal 		| Displayed as: Frometal Helmet
+ArmorFrometalChest 	| Displayed as: Frometal Chestplate
+ArmorFrometalLegs 	| Displayed as: Frometal Greaves
+CapeFrometal 		| Displayed as: Frometal Cape
+BeltFrometal 		| Displayed as: Frometal Belt
+HelmetDrakescale 	| Displayed as: Drakescale Helmet
+ArmorDrakescaleChest 	| Displayed as: Drakescale Chestplate
+ArmorDrakescaleLegs 	| Displayed as: Drakescale Greaves
+CapeDrakescale 		| Displayed as: Drakescale Cape
+BeltDrakescale 		| Displayed as: Drakescale Belt
+HelmetFlametal 		| Displayed as: Flametal Helmet
+ArmorFlametalChest 	| Displayed as: Flametal Chestplate
+ArmorFlametalLegs 	| Displayed as: Flametal Greaves
+CapeFlametal 		| Displayed as: Flametal Cape
+BeltFlametal 		| Displayed as: Flametal Belt
+HelmetForgedscale 	| Displayed as: Forgedscale Helmet
+ArmorForgedscaleChest 	| Displayed as: Forgedscale Chestplate
+ArmorForgedscaleLegs 	| Displayed as: Forgedscale Greaves
+CapeForgedscale 	| Displayed as: Forgedscale Cape
+BeltForgedscale 	| Displayed as: Forgedscale Belt
+
+[View in raw text for correct structure!]
+== Build Paths ==============================================================================================
+">" = Tier builds into...
+"|" = Tier Builds into.. or...
+":" = Tier ends here.                        
+                                             > Silver > Wolf:
+              > TrollLeather > Glass:        |        > Blackmetal > Padded:
+              |                              |        |
+Rag > Leather > TrollLeather > Bronze > Iron > Silver > Blackmetal > Heavymetal > Frometal:
+    |                        |        |                            |
+    > Leather > Bone:        |        |                            > Heavymetal > Flametal:
+                             |        > Iron > Abyssal:            |
+                             > Bronze > Ancient:                   > Heavymetal > Heavyscale > Drakescale:
+                                                                                |    
+                                                                                > Heavyscale > Forgescale:                                                                    
+
+=============================================================================================================
