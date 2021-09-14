@@ -332,3 +332,8 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+
+# ValheimExpanded (Valheim Mod API and Core DLL)
+bin/Debug/*.dll
+AssetBundleHelper.cs
+*.File
