@@ -14,17 +14,41 @@ using Jotunn.Managers;
 using System.Reflection;
 using System.Linq;
 
+/// <summary>
+/// Short for "ValheimExpanded", an overhaul for Valheim, a Unity-built game.
+/// </summary>
 namespace ValEx
 {
+    /// <summary>
+    /// ValheimExpanded's Administrative Logician (Currently In-Progress)
+    /// </summary>
     public class Admin
     {
+        /// <summary>
+        /// The main entry for the <see cref="Admin"/> class.
+        /// </summary>
         public class AntiCheat
         {
+            /// <summary>
+            /// The main entry for the <see cref="AntiCheat"/> class. Initialize with <see cref="System.InitializeOn(string, bool)"/>.
+            /// </summary>
             public class System
             {
+                /// <summary>
+                /// Describes current list of all connected players in the current session.
+                /// </summary>
                 public static List<Player> localPlayers { get; } = Player.GetAllPlayers();
+                /// <summary>
+                /// Describes current list of all processes on the Client's operating system during the current session.
+                /// </summary>
                 public static Process[] localProcesses { get; } = Process.GetProcesses();
+                /// <summary>
+                /// Describes current list of all processes named "valheim.exe" on the Client's operating system during the current session.
+                /// </summary>
                 public static Process[] localValheims { get; } = Process.GetProcessesByName("valheim.exe");
+                /// <summary>
+                /// Gets <see cref="localPlayers"/>, returns as a <see cref="List{Process}"/>.
+                /// </summary>
                 public static List<Process> GetLocalProcesses()
                 {
                     List<Process> tempList = new List<Process> { };
@@ -34,6 +58,11 @@ namespace ValEx
                     }
                     return tempList;
                 }
+                /// <summary>
+                /// Initializes a new instance of <see cref="Admin"/>, focused on a <see cref="Process"/>. This should generally be used only to track "valheim.exe".
+                /// </summary>
+                /// <param name="ProcessName">Any <see cref="Process"/>, usually "valheim.exe".</param>
+                /// <param name="DisplayWindow">Whether or not the <see cref="Process"/> Bridge displays it's streambuffer. This should be forced to false by a server to prevent server process exposure.</param>
                 public void InitializeOn(string ProcessName, bool DisplayWindow = false)
                 {
                     foreach (Process localProcess in localProcesses)
@@ -44,6 +73,11 @@ namespace ValEx
                         }
                     }
                 }
+                /// <summary>
+                /// Creates a <see cref="Process"/> which is designed for interop between external programs and the "valheim.exe" <see cref="Process"/>.
+                /// </summary>
+                /// <param name="ProcessName">Any <see cref="Process"/>, usually "valheim.exe".</param>
+                /// <param name="DisplayWindow">Whether or not the <see cref="Process"/> Bridge displays it's streambuffer. This should be forced to false by a server to prevent server process exposure.</param>
                 public void CreateCMDBridge(string ProcessName, bool DisplayWindow = false)
                 {
                     Process cmdBridge = new Process();
@@ -55,10 +89,18 @@ namespace ValEx
                         cmdBridge.Start();
                     }
                 }
-                public void DisplayPlayerOnScreen(string PlayerName)
+                /// <summary>
+                /// Utilizes <see cref="API.HelpMe.Get.CameraMaterial(string)"/> to grab and convert the Camera of any connected player to a prefab. (Currently In-Progress)
+                /// </summary>
+                /// <param name="PlayerName">Describes the Player by their connected In-Game Name</param>
+                private void DisplayPlayerOnScreen(string PlayerName)
                 {
 
                 }
+                /// <summary>
+                /// Terminates the listed <see cref="Process"/> at runtime, to prevent listed <see cref="Process"/> from accessing "valheim.exe" during runtime.
+                /// </summary>
+                /// <param name="ProcessName">The name of any <see cref="Process"/></param>
                 public void KillProcess(string ProcessName)
                 {
                     foreach (Process localProcess in localProcesses)
@@ -69,6 +111,10 @@ namespace ValEx
                         }
                     }
                 }
+                /// <summary>
+                /// <see cref="KillProcess(string)"/>, but for an <see cref="Array"/> of <see cref="string"/>
+                /// </summary>
+                /// <param name="ProcessNames"></param>
                 public void KillProcesses(string[] ProcessNames)
                 {
                     foreach (string ProcessName in ProcessNames)
@@ -83,12 +129,11 @@ namespace ValEx
                     }
                 }
             }
-            public class Interface
-            {
-
-            }
         }
     }
+    /// <summary>
+    /// Main entry into the ValheimExpanded Registry System.
+    /// </summary>
     public static class Registry
     {
         public static List<string> DebugModules { get; set; } = new List<string> { };
@@ -101,15 +146,37 @@ namespace ValEx
         public static List<string> Textures { get; } = new List<string>() { "Wood", "Stone", "Flint", "Bone", "Primal", "Bronze", "Abyssal", "Iron", "Ancient", "Silver", "Fang", "Blackmetal", "Needle", "Titanium", "Steel", "Fromyr", "Flamyr" };
         public static List<string> Materials { get; } = new List<string>() { "Wood", "Stone", "Flint", "BoneFragments", "TrollHide", "Bronze", "Chitin", "Iron", "ElderBark", "Silver", "WolfFang", "BlackMetal", "Needle", "Titanium_VE", "Steel_VE", "Fromyr_VE", "Flamyr_VE" };
     }
+    /// <summary>
+    /// Main entry into the API for ValheimExpanded. Written by Mr-Rageous.
+    /// </summary>
     public static class API
     {
+        /// <summary>
+        /// Contains: ConfigFiles and currently loaded AssetBundle.
+        /// </summary>
         public static class Cache
         {
+            /// <summary>
+            /// Contains currently loaded Asset. Set to "zmaterials" by default, use <see cref="Bundle.Unload(bool)"/>.
+            /// </summary>
             public static AssetBundle Bundle { get; set; } = AssetUtils.LoadAssetBundleFromResources("zmaterials", typeof(Core).Assembly);
+            /// <summary>
+            /// The current <see cref="BepInEx.Paths.ConfigPath"/> to the Valheim Settings file. This can be changed but is static.
+            /// </summary>
             public static ConfigFile Settings { get; set; } = new ConfigFile(Path.Combine(BepInEx.Paths.ConfigPath, "ValheimExpanded - (0) Settings.cfg"), true);
+            /// <summary>
+            /// The current <see cref="BepInEx.Paths.ConfigPath"/> to the Valheim Weapons file. This can be changed but is static.
+            /// </summary>
             public static ConfigFile Weapons { get; set; } = new ConfigFile(Path.Combine(BepInEx.Paths.ConfigPath, "ValheimExpanded - (2) Weapons.cfg"), true);
+            /// <summary>
+            /// The current <see cref="BepInEx.Paths.ConfigPath"/> to the Valheim Armors file. This can be changed but is static.
+            /// </summary>
             public static ConfigFile Armors { get; set; } = new ConfigFile(Path.Combine(BepInEx.Paths.ConfigPath, "ValheimExpanded - (1) Armors.cfg"), true);
         }
+        /// <summary>
+        /// Contains: Methods for information manipulation regarding the current <see cref="Cache.Bundle"/> that is loaded.
+        /// To manipulate the actual Bundle, use <see cref="Cache.Bundle"/>. Note: This system is temporary.
+        /// </summary>
         public static class Bundle
         {
             public static Mesh GetMesh(string MeshName)
@@ -153,8 +220,17 @@ namespace ValEx
             }
             public static void Unload(bool UnloadAllObjects = false) { Cache.Bundle.Unload(UnloadAllObjects); }
         }
+        /// <summary>
+        /// Creates a new <see cref="GameObject"/> which is mapped from a <see cref="CustomEntity"/> derivative, usually a <see cref="CustomItem"/>.
+        /// The new item is created by script through access to the base item as reference.
+        /// Use <see cref="Armor.WithConfigs"/> to create a new <see cref="Armor"/>, or a <see cref="Weapon.WithConfigs"/> to create a new <see cref="Weapon"/>.
+        /// This will also add them to the ValheimExpanded <see cref="Registry"/>, and be added to the config file by <see cref="string"/>.
+        /// </summary>
         public static class New
         {
+            /// <summary>
+            /// Create this properly with <see cref="WithConfigs(string, string, string, string, string, bool)"/>.
+            /// </summary>
             public class Armor
             {
                 #region Item_Properties
@@ -301,8 +377,13 @@ namespace ValEx
                     return this;
                 }
             }
+            /// <summary>
+            /// Create this properly with <see cref="WithConfigs(string, string, string, int, string, int, string, bool, int, bool, RequirementConfig[])"/>.
+            /// </summary>
             public class BasicItem
             {
+                #region Item_Properties
+                #endregion
                 public BasicItem WithConfigs(string Type, string Material, string BasePrefab, int Amount, string Station, int MinStationLevel, string Signature = "_VE", bool Teleportable = true, int Value = 0, bool Enabled = true, params RequirementConfig[] Requirements)
                 {
                     try
@@ -313,6 +394,7 @@ namespace ValEx
                         ItemManager.Instance.AddItem(Item);
                         GameObject Prefab = Item.ItemPrefab; MeshRenderer MeshRenderer = Prefab.GetComponentInChildren<MeshRenderer>();
                         ItemDrop Drop = Item.ItemDrop; ItemDrop.ItemData Data = Drop.m_itemData; ItemDrop.ItemData.SharedData Shared = Data.m_shared;
+                        #region Item_Property_Mapping
                         MeshRenderer.material = Bundle.GetMaterial(Material);
                         Shared.m_name = Name;
                         Shared.m_description = Description;
@@ -320,6 +402,7 @@ namespace ValEx
                         Shared.m_questItem = false;
                         Shared.m_teleportable = Teleportable;
                         Shared.m_value = Value;
+                        #endregion
                         CustomRecipe Recipe = new CustomRecipe(new RecipeConfig()
                         {
                             Item = PrefabName + Signature,
@@ -343,8 +426,13 @@ namespace ValEx
                     return this;
                 }
             }
+            /// <summary>
+            /// Create this properly with <see cref="WithConfigs(string, string, string, string, string, string, string, string, int, int, bool)"/>
+            /// </summary>
             public class BuildPiece
             {
+                #region Item_Properties
+                #endregion
                 public BuildPiece WithConfigs(string Name, string BaseName, string Material, string PieceTableItem, string Description, string Icon, string ReqStation, string ReqItem, int ReqAmount, int ReqAmountPerLevel, bool ReqRecover)
                 {
 
@@ -386,8 +474,12 @@ namespace ValEx
                     return this;
                 }
             }
+            /// <summary>
+            /// Create this properly with <see cref="WithConfigs(string, string, string, string, string, bool)"/>
+            /// </summary>
             public class Weapon
             {
+                #region Item_Properties
                 public ConfigEntry<string> CE_MeshName { get; set; }
                 public ConfigEntry<string> CE_PrefabName { get; set; }
                 public ConfigEntry<string> CE_CustomName { get; set; }
@@ -451,9 +543,11 @@ namespace ValEx
                 public ConfigEntry<int> CE_Slot4Amount { get; set; }
                 public ConfigEntry<int> CE_Slot4AmountPerLevel { get; set; }
                 public ConfigEntry<bool> CE_Enabled { get; set; }
+                #endregion
                 public Weapon WithConfigs(string Material, string Type, string BasePrefab, string Signature, string SetNumber = "", bool FixVanilla = true)
                 {
                     if (SetNumber != "") { SetNumber += "_"; }
+                    #region Item_Properties
                     CE_Repairable = ConfigBind($"{SetNumber}{Material}.{Type}.Data", "Repairable", true, ConfigType: "Weapon");
                     CE_Destroyable = ConfigBind($"{SetNumber}{Material}.{Type}.Data", "Breakable", false, ConfigType: "Weapon");
                     CE_TokenName = ConfigBind($"{SetNumber}{Material}.{Type}.Data", "Name", $"{Material} {Type}", ConfigType: "Weapon");
@@ -503,8 +597,9 @@ namespace ValEx
                     CE_Slot4Item = ConfigBind($"{SetNumber}{Material}.{Type}.Recipe", "Slot 4: Item", "Wood", ConfigType: "Weapon");
                     CE_Slot4Amount = ConfigBind($"{SetNumber}{Material}.{Type}.Recipe", "Slot 4: Amount", 1, ConfigType: "Weapon");
                     CE_Slot4AmountPerLevel = ConfigBind($"{SetNumber}{Material}.{Type}.Recipe", "Slot 4: Amount Per Level", 0, ConfigType: "Weapon");
-
+                    #endregion
                     string PrefabName; string CustomName; string Description; string AmmoType;
+                    #region Item_Syntax
                     if (Type == "Shield")
                     {
                         PrefabName = Type + Material; CustomName = Material + " " + Type;
@@ -523,6 +618,7 @@ namespace ValEx
                     }
                     if (Type == "Bow") { AmmoType = "arrow"; } else { AmmoType = ""; }
                     if (FixVanilla == true) { try { HelpMe.Fix.Vanilla(PrefabName); } finally { } }
+                    #endregion
                     CustomItem Item = new CustomItem(PrefabName + Signature, BasePrefab);
                     ItemManager.Instance.AddItem(Item);
                     GameObject Prefab = Item.ItemPrefab;
@@ -530,6 +626,7 @@ namespace ValEx
                     ItemDrop Drop = Item.ItemDrop;
                     ItemDrop.ItemData Data = Drop.m_itemData;
                     ItemDrop.ItemData.SharedData Shared = Data.m_shared;
+                    #region Item_Property_Mapping
                     MeshRenderer.material = Bundle.GetMaterial(Material);
                     Shared.m_name = CustomName;
                     Shared.m_description = Description;
@@ -567,6 +664,7 @@ namespace ValEx
                     Shared.m_blockPowerPerLevel = CE_BlockPowerPerLevel.Value;
                     Shared.m_deflectionForce = CE_DeflectionForce.Value;
                     Shared.m_deflectionForcePerLevel = CE_DeflectionForcePerLevel.Value;
+                    #endregion
                     ItemManager.Instance.AddRecipe(Recipe(
                         Type: Type,
                         Material: Material,
@@ -679,21 +777,52 @@ namespace ValEx
                 }
             }
         }
+        /// <summary>
+        /// Empty of features currently. Work In Progress.
+        /// </summary>
         public static class Settings
         {
+            /// <summary>
+            /// The parent class of <see cref="FixVanilla"/>.
+            /// </summary>
             public static class Admin
             {
+                /// <summary>
+                /// This is for future development but is not a placeholder.
+                /// </summary>
                 public static ConfigEntry<bool> FixVanilla { get; set; }
             }
         }
+        /// <summary>
+        /// Use this to fix an <see cref="LODGroup"/> somehow, use <see cref="Create.LODGroup(string, string, float, bool, bool, Vector3, LODFadeMode, HideFlags)"/> to have one created.
+        /// </summary>
         public static class HelpMe
         {
+            /// <summary>
+            /// Used to transform odd typed data into more useable formats for ValheimExpanded.
+            /// </summary>
             public static class Fix
             {
+                /// <summary>
+                /// Removes the <see cref="Recipe"/> with the <see cref="ItemManager"/>
+                /// </summary>
+                /// <param name="Item">Name of the <see cref="CustomItem"/> in the <see cref="ItemManager"/></param>
                 public static void Vanilla(string Item)
                 {
                     ItemManager.Instance.RemoveRecipe("Recipe_" + Item);
                 }
+                /// <summary>
+                /// Used to fix data within the <see cref="LODGroup"/> of an <see cref="Piece"/> during runtime.
+                /// </summary>
+                /// <param name="Piece">The parent to the <see cref="LODGroup"/>.</param>
+                /// <param name="Name"></param>
+                /// <param name="Tag"></param>
+                /// <param name="Size"></param>
+                /// <param name="AnimateCrossFading"></param>
+                /// <param name="Enabled"></param>
+                /// <param name="LocalReferencePoint"></param>
+                /// <param name="LODFadeMode"></param>
+                /// <returns></returns>
                 public static Piece LODGroupFor(Piece Piece, string Name, string Tag, float Size, bool AnimateCrossFading, bool Enabled, Vector3 LocalReferencePoint, LODFadeMode LODFadeMode = LODFadeMode.None)
                 {
                     GameObject PieceObject = Piece.gameObject;
@@ -716,6 +845,18 @@ namespace ValEx
                         PieceLOD.tag = Tag;
                     } return Piece;
                 }
+                /// <summary>
+                /// Used to fix data within the <see cref="LODGroup"/> of an <see cref="CustomPiece"/> during runtime.
+                /// </summary>
+                /// <param name="Piece">The parent to the <see cref="LODGroup"/>.</param>
+                /// <param name="Name"></param>
+                /// <param name="Tag"></param>
+                /// <param name="Size"></param>
+                /// <param name="AnimateCrossFading"></param>
+                /// <param name="Enabled"></param>
+                /// <param name="LocalReferencePoint"></param>
+                /// <param name="LODFadeMode"></param>
+                /// <returns></returns>
                 public static CustomPiece LODGroupFor(CustomPiece Piece, string Name, string Tag, float Size, bool AnimateCrossFading, bool Enabled, Vector3 LocalReferencePoint, LODFadeMode LODFadeMode = LODFadeMode.None)
                 {
                     GameObject PieceObject = Piece.PiecePrefab;
@@ -740,8 +881,16 @@ namespace ValEx
                     } return Piece;
                 }
             }
+            /// <summary>
+            /// Gets <see cref="UnityEngine"/> details such as <see cref="Camera.targetTexture"/> of target <see cref="Player"/>.
+            /// </summary>
             public static class Get
             {
+                /// <summary>
+                /// Gets target's camera render (their screen in-game), and provides it as a <see cref="Material"/>.
+                /// </summary>
+                /// <param name="playerName"></param>
+                /// <returns></returns>
                 public static Material CameraMaterial(string playerName)
                 {
                     Camera playerCamera; Material newMaterial = null;
@@ -761,6 +910,11 @@ namespace ValEx
                     }
                     return newMaterial;
                 }
+                /// <summary>
+                /// Gets target's camera render (their screen in-game), and provides it as a <see cref="Texture"/>.
+                /// </summary>
+                /// <param name="playerName"></param>
+                /// <returns></returns>
                 public static Texture CameraTexture(Camera playerCamera)
                 {
                     if (playerCamera.enabled != true) { return null; }
@@ -771,6 +925,12 @@ namespace ValEx
                         return renderTexture;
                     }
                 }
+                /// <summary>
+                /// Gets closest <see cref="Transform"/> to ObjectA, from an <see cref="Array"/>
+                /// </summary>
+                /// <param name="ObjectA"></param>
+                /// <param name="ObjectBs"></param>
+                /// <returns></returns>
                 public static Transform ClosestTransformFor(Transform ObjectA, Transform[] ObjectBs)
                 {
                     Transform bestTarget = null;
@@ -790,8 +950,23 @@ namespace ValEx
                     return bestTarget;
                 }
             }
+            /// <summary>
+            /// Creates non-<see cref="GameObject"/> component scripts.
+            /// </summary>
             public static class Create
             {
+                /// <summary>
+                /// Create a new <see cref="LODGroup(string, string, float, bool, bool, Vector3, LODFadeMode, HideFlags)"/>
+                /// </summary>
+                /// <param name="Name"></param>
+                /// <param name="Tag"></param>
+                /// <param name="Size"></param>
+                /// <param name="AnimateCrossFading"></param>
+                /// <param name="Enabled"></param>
+                /// <param name="LocalReferencePoint"></param>
+                /// <param name="LODFadeMode"></param>
+                /// <param name="HideFlags"></param>
+                /// <returns></returns>
                 public static LODGroup LODGroup(string Name, string Tag, float Size, bool AnimateCrossFading, bool Enabled, Vector3 LocalReferencePoint, LODFadeMode LODFadeMode = LODFadeMode.None, HideFlags HideFlags = HideFlags.None)
                 {
                     LODGroup LODGroup = new LODGroup
@@ -808,6 +983,9 @@ namespace ValEx
                     return LODGroup;
                 }
             }
+            /// <summary>
+            /// This will serialize objects in the future. Work In-Progress.
+            /// </summary>
             public class Serialize
             {
                 public Serialize()
@@ -816,6 +994,9 @@ namespace ValEx
                 }
             }
         }
+        /// <summary>
+        /// Contains: General hard typed information about in-game <see cref="Prefabs"/> such as Weapon prefab names. Purely referential, for IntelliSense.
+        /// </summary>
         public static class Info
         {
             public static readonly List<string> Types = new List<string> { "Atgeir", "Axe", "Battleaxe", "Club", "Bow", "Mace", "Knife", "Pickaxe", "Spear", "Sword", "Sledge", "Shield", "TowerShield" };
@@ -837,6 +1018,9 @@ namespace ValEx
             public static readonly List<List<string>> WeaponTypes = new List<List<string>> { Atgeirs, Axes, Battleaxes, Clubs, Bows, Maces, Knives, Pickaxes, Spears, Swords, Sledges, Shields, TowerShields, Tools, OtherTypes };
         }
     }
+    /// <summary>
+    /// AssetBundleHelper class to retrieve embedded assets from the <see cref="Core"/>.
+    /// </summary>
     class AssetBundleHelper
     {
         public static AssetBundle GetAssetBundleFromResources(string fileName)

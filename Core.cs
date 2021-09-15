@@ -1,14 +1,10 @@
-﻿using BepInEx;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using BepInEx;
 using BepInEx.Configuration;
-using Jotunn.Configs;
-using Jotunn.Entities;
 using Jotunn.Managers;
 using Jotunn.Utils;
-using System;
-using UnityEngine;
-using System.Collections.Generic;
-using System.IO;
-using UnityEngine.UI;
 
 namespace ValEx
 {
@@ -21,23 +17,50 @@ namespace ValEx
         public const string PluginGUID = "MrRageous.ValEx";
         public const string PluginName = "ValheimExpanded: Core Module";
         public const string PluginVersion = "0.5.0";
+        /// <summary>
+        /// <see cref="bool"/> for <see cref="Jotunn.Logger"/> in Debug Console. Used in <see cref="Concept.ConstructLogs()"/>.
+        /// </summary>
         public static ConfigEntry<bool> DebugVE { get; set; }
+        /// <summary>
+        /// A <see cref="bool"/> for <see cref="Jotunn.Logger"/> in Debug Console. Used in <see cref="Concept.ConstructLogs()"/>.
+        /// </summary>
         public static ConfigEntry<bool> DeNotes { get; set; }
+        /// <summary>
+        /// A <see cref="bool"/> for <see cref="Jotunn.Logger"/> in Debug Console. Used in <see cref="Concept.ConstructLogs()"/>.
+        /// </summary>
         public static ConfigEntry<bool> DisplayEnabled { get; set; }
+        /// <summary>
+        /// A <see cref="bool"/> for <see cref="Jotunn.Logger"/> in Debug Console. Used in <see cref="Concept.ConstructLogs()"/>.
+        /// </summary>
         public static ConfigEntry<bool> FirstTimeSetup { get; set; }
+        /// <summary>
+        /// A <see cref="int"/> for <see cref="Jotunn.Logger"/> in Debug Console. Used in <see cref="Concept.ConstructLogs()"/>.
+        /// This describes the current number of recognized modules but needs to be added to manually, usually with ModuleCount++
+        /// </summary>
         public static int ModuleCount { get; set; } = 1;
+        /// <summary>
+        /// This is the entry point per Initialization for the <see cref="Core"/>.
+        /// </summary>
         private void Awake()
         {
             DebugVE = API.New.ConfigBind("00_DebugConsole", "DebugVE", true, "", false, false, "Settings");
             if (DebugVE.Value == true) { ItemManager.OnItemsRegisteredFejd += Concept.ConstructLogs; }
-
         }
+        /// <summary>
+        /// This is the entry point per frame for the <see cref="Core"/>.
+        /// </summary>
         private void Update()
         {
            // if (Input.GetKeyDown(KeyCode.Numlock)) { Content.AdminGUI MainForm = new Content.AdminGUI(); MainForm.TogglePanel(); }
         }
+        /// <summary>
+        /// The Conceptual basis of the <see cref="Core"/>, which primarily provides initialization functionality.
+        /// </summary>
         public static class Concept
         {
+            /// <summary>
+            /// This is an aspect of the <see cref="API"/>'s <see cref="Registry"/> System, called by <see cref="Core"/> on <see cref="Awake()"/>.
+            /// </summary>
             public static void ConstructLogs()
             {
                 Jotunn.Logger.LogMessage(".============={ Welcome To ValheimExpanded. }=============.");
@@ -104,6 +127,9 @@ namespace ValEx
                 }
             }
         }
+        /// <summary>
+        /// The Content contains instance relevent data, which includes in-game access to the <see cref="AdminGUI"/> display for the <see cref="API"/> class.
+        /// </summary>
         public static class Content
         {
             public static ConfigEntry<List<string>> Register { get; set; }
